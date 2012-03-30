@@ -1,28 +1,27 @@
 
 Name: app-log-viewer
-Group: ClearOS/Apps
-Version: 5.9.9.4
-Release: 1.1%{dist}
+Epoch: 1
+Version: 1.0.10
+Release: 1%{dist}
 Summary: Log Viewer
 License: GPLv3
-Packager: ClearFoundation
-Vendor: ClearFoundation
+Group: ClearOS/Apps
 Source: %{name}-%{version}.tar.gz
 Buildarch: noarch
-Requires: %{name}-core = %{version}-%{release}
+Requires: %{name}-core = 1:%{version}-%{release}
 Requires: app-base
 
 %description
-Log Viewer description
+Tabular display of all system log files.  Viewing and searching of log files are essential and typically the first step in troubleshooting problems with your server.
 
 %package core
 Summary: Log Viewer - APIs and install
-Group: ClearOS/Libraries
 License: LGPLv3
+Group: ClearOS/Libraries
 Requires: app-base-core
 
 %description core
-Log Viewer description
+Tabular display of all system log files.  Viewing and searching of log files are essential and typically the first step in troubleshooting problems with your server.
 
 This package provides the core API and libraries.
 
