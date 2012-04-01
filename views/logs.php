@@ -85,12 +85,17 @@ if ($resultsize > $max_bytes)
 ///////////////////////////////////////////////////////////////////////////////
 
 echo form_open('log_viewer/export', array('target' => '_blank'));
+
+$options['default_rows'] = 500;
+$options['sort'] = FALSE;
+$options['no_action'] = TRUE;
+
 echo summary_table(
     lang('log_viewer_logs'),
     $buttons,
     $headers,
     $items,
-    array('sort' => FALSE, 'no_action' => TRUE)
+    $options
 );
 echo "<input type='hidden' name='my_file' id='my_file' value='$file'>";
 echo "<input type='hidden' name='my_filter' id='my_filter' value='$filter'>";
