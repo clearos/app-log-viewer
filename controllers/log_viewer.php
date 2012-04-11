@@ -68,7 +68,8 @@ class Log_Viewer extends ClearOS_Controller
         $data = array(
             'log_file_options' => $this->log_viewer->get_log_files(),
             'filter' => '.*',
-            'full_line' => FALSE
+            'full_line' => FALSE,
+            'file' => 'system'
         );
 
         $this->page->view_form('settings', $data, lang('log_viewer_app_name'));

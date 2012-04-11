@@ -89,6 +89,8 @@ class Settings extends ClearOS_Controller
 
         if ($this->input->post('file'))
             $data['file'] = $this->input->post('file');
+        else
+            $data['file'] = 'system';
 
         if ($this->input->post('full_line'))
             $data['full_line'] = $this->input->post('full_line');
