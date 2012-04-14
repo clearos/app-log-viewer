@@ -1,7 +1,7 @@
 
 Name: app-log-viewer
 Epoch: 1
-Version: 1.0.10
+Version: 1.1.0
 Release: 1%{dist}
 Summary: Log Viewer
 License: GPLv3
@@ -15,7 +15,7 @@ Requires: app-base
 Tabular display of all system log files.  Viewing and searching of log files are essential and typically the first step in troubleshooting problems with your server.
 
 %package core
-Summary: Log Viewer - APIs and install
+Summary: Log Viewer - Core
 License: LGPLv3
 Group: ClearOS/Libraries
 Requires: app-base-core
