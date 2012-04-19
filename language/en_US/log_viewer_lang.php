@@ -1,7 +1,7 @@
 <?php
 
 $lang['log_viewer_app_name'] = 'Log Viewer';
-$lang['log_viewer_app_description'] = 'Tabular display of all system log files.  Viewing and searching of log files are essential and typically the first step in troubleshooting problems with your server.';
+$lang['log_viewer_app_description'] = 'The Log View app provides a tabular display of all system log files.  Viewing and searching of log files are essential and typically the first step in troubleshooting problems with your system.';
 $lang['log_viewer_file'] = 'Log File';
 $lang['log_viewer_logs'] = 'Logs';
 $lang['log_viewer_filter'] = 'Filter';
