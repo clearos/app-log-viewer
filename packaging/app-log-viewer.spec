@@ -12,7 +12,7 @@ Requires: %{name}-core = 1:%{version}-%{release}
 Requires: app-base
 
 %description
-Tabular display of all system log files.  Viewing and searching of log files are essential and typically the first step in troubleshooting problems with your server.
+The Log View app provides a tabular display of all system log files.  Viewing and searching of log files are essential and typically the first step in troubleshooting problems with your system.
 
 %package core
 Summary: Log Viewer - Core
@@ -21,7 +21,7 @@ Group: ClearOS/Libraries
 Requires: app-base-core
 
 %description core
-Tabular display of all system log files.  Viewing and searching of log files are essential and typically the first step in troubleshooting problems with your server.
+The Log View app provides a tabular display of all system log files.  Viewing and searching of log files are essential and typically the first step in troubleshooting problems with your system.
 
 This package provides the core API and libraries.
 
