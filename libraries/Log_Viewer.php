@@ -119,13 +119,9 @@ class Log_Viewer extends Engine
     {
         clearos_profile(__METHOD__, __LINE__);
 
-        try {
-            $folder = new Folder(self::FOLDER_LOG_FILES, true);
-            $options['follow_symlinks'] = TRUE;
-            $files = $folder->get_recursive_listing($options);
-        } catch (Exception $e) {
-            throw new Engine_Exception(clearos_exception_message($e), CLEAROS_ERROR);
-        }
+        $folder = new Folder(self::FOLDER_LOG_FILES, TRUE);
+        $options['follow_symlinks'] = TRUE;
+        $files = $folder->get_recursive_listing($options);
 
         $list = array();
 
@@ -158,12 +154,8 @@ class Log_Viewer extends Engine
 
         Validation_Exception::is_valid($this->validate_log_file($log_file));
 
-        try {
-            $target = new File(self::FOLDER_LOG_FILES . "/" . $log_file, true);
-            $result = $target->get_search_results($filter, $max);
-        } catch (Exception $e) {
-            throw new Engine_Exception(clearos_exception_message($e), CLEAROS_ERROR);
-        }
+        $target = new File(self::FOLDER_LOG_FILES . "/" . $log_file, TRUE);
+        $result = $target->get_search_results($filter, $max);
 
         return $result;
     }

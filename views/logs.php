@@ -63,12 +63,12 @@ $items = array();
 $resultsize = 0;
 foreach ($log_data as $id => $entry) {
 
-	$resultsize += strlen($entry);
+    $resultsize += strlen($entry);
     $item['title'] = $id;
     $item['action'] = NULL;
     $item['anchors'] = NULL;
     $item['details'] = array(
-		'<span style=\'font-size: .9em; font-family: monospace;\'>' . htmlentities(($full_line ? $entry : substr($entry, 0, 120))) . '</span>'
+        '<span style=\'font-size: .9em; font-family: monospace;\'>' . htmlentities(($full_line ? $entry : substr($entry, 0, 120))) . '</span>'
     );
 
     $items[] = $item;

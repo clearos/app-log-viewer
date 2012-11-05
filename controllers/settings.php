@@ -39,7 +39,7 @@ use \clearos\apps\log_viewer\Log_Viewer as Log_Viewer;
  * Log Viewer settings controller.
  *
  * @category   Apps
- * @package    Logs
+ * @package    Log_Viewer
  * @subpackage Controllers
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2011 ClearFoundation
