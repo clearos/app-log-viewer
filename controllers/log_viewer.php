@@ -1,30 +1,30 @@
 <?php
 
 /**
- * Log_Viewer class.
+ * Log_Viewer controller.
  *
  * @category   Apps
  * @package    Log_Viewer
  * @subpackage Controllers
  * @author     ClearFoundation <developer@clearfoundation.com>
- * @copyright  2011 ClearFoundation
- * @license    http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License version 3 or later
+ * @copyright  2011-2013 ClearFoundation
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
  * @link       http://www.clearfoundation.com/docs/developer/apps/log_viewer/
  */
 
 ///////////////////////////////////////////////////////////////////////////////
 //
 // This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU Lesser General Public License as published by
+// it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
 // This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU Lesser General Public License for more details.
+// GNU General Public License for more details.
 //
-// You should have received a copy of the GNU Lesser General Public License
+// You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 ///////////////////////////////////////////////////////////////////////////////
@@ -40,60 +40,67 @@
  * @package    Log_Viewer
  * @subpackage Controllers
  * @author     ClearFoundation <developer@clearfoundation.com>
- * @copyright  2011 ClearFoundation
- * @license    http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License version 3 or later
+ * @copyright  2011-2013 ClearFoundation
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
  * @link       http://www.clearfoundation.com/docs/developer/apps/log_viewer/
  */
 
 class Log_Viewer extends ClearOS_Controller
 {
     /**
-     * Log_Viewer default controller
+     * Log Viewer default controller.
      *
      * @return view
      */
 
     function index()
     {
-        
-        clearos_profile(__METHOD__, __LINE__);
-
         // Load dependencies
         //------------------
 
         $this->load->library('log_viewer/Log_Viewer');
         $this->lang->load('log_viewer');
 
-        // Defaults
-        $data = array(
-            'log_file_options' => $this->log_viewer->get_log_files(),
-            'filter' => '.*',
-            'full_line' => FALSE,
-            'file' => 'system'
-        );
+        // Handle form submit
+        //-------------------
 
-        $this->page->view_form('settings', $data, lang('log_viewer_app_name'));
-    }
+        if ($this->input->post('display')) {
+            try {
+                $log_entries = $this->log_viewer->get_log_entries($this->input->post('file'), $this->input->post('filter'));
+                $status = array_shift($log_entries);
 
-    /**
-     * Log_Viewer default controller
-     *
-     * @return view
-     */
+                $data['log_data'] = $log_entries;
+                $data['is_truncated'] = ($status === \clearos\apps\log_viewer\Log_Viewer::SEARCH_TRUNCATED) ? TRUE : FALSE;
+            } catch (Exception $e) {
+                $this->page->view_exception($e);
+                return;
+            }
+        }
 
-    function view()
-    {
-        
-        clearos_profile(__METHOD__, __LINE__);
+        // Load view data
+        //---------------
 
-        $this->lang->load('log_viewer');
+        $data['log_file_options'] = $this->log_viewer->get_log_files();
 
-        $views = array(
-            'log_viewer/settings',
-            'log_viewer/logs'
-        );
+        if ($this->input->post('filter') == FALSE)
+            $data['filter'] = '.*';
+        else
+            $data['filter'] = $this->input->post('filter');
 
-        $this->page->view_forms($views, lang('log_viewer_app_name'));
+        if ($this->input->post('file'))
+            $data['file'] = $this->input->post('file');
+        else
+            $data['file'] = 'system';
+
+        if ($this->input->post('full_line'))
+            $data['full_line'] = $this->input->post('full_line');
+
+        // Load views
+        //-----------
+
+        $options['type'] = MY_Page::TYPE_CONFIGURATION;
+
+        $this->page->view_form('log_viewer', $data, lang('log_viewer_app_name'), $options);
     }
 
     /**
@@ -104,8 +111,13 @@ class Log_Viewer extends ClearOS_Controller
 
     function export()
     {
-        
-        clearos_profile(__METHOD__, __LINE__);
+        // Load dependencies
+        //------------------
+
+        $this->load->library('log_viewer/Log_Viewer');
+
+        // Export data
+        //------------
 
         $log_file = $this->input->post('my_file');
         $filter  = $this->input->post('my_filter');
@@ -116,17 +128,14 @@ class Log_Viewer extends ClearOS_Controller
         header('Pragma: no-cache');
         header('Expires: 0');
 
-        // Load dependencies
-        //------------------
-
-        $this->load->library('log_viewer/Log_Viewer');
         try {
-            $lines = $this->log_viewer->get_log_entries($log_file, $filter, -1);
+            $lines = $this->log_viewer->get_log_entries($log_file, $filter);
         } catch (Exception $e) {
             $this->page->set_message(clearos_exception_message($e));
             redirect('log_viewer');
             return;
         }
+
         ob_start();
         foreach ($lines as $line)
             echo $line . "\n";

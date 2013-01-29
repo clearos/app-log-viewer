@@ -7,7 +7,7 @@
  * @package    Log_Viewer
  * @subpackage Libraries
  * @author     ClearFoundation <developer@clearfoundation.com>
- * @copyright  2011 ClearFoundation
+ * @copyright  2011-2013 ClearFoundation
  * @license    http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License version 3 or later
  * @link       http://www.clearfoundation.com/docs/developer/apps/log_viewer/
  */
@@ -66,8 +66,10 @@ clearos_load_library('base/Folder');
 // Exceptions
 //-----------
 
+use \clearos\apps\base\File_Too_Large_Exception as File_Too_Large_Exception;
 use \clearos\apps\base\Validation_Exception as Validation_Exception;
 
+clearos_load_library('base/File_Too_Large_Exception');
 clearos_load_library('base/Validation_Exception');
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -81,7 +83,7 @@ clearos_load_library('base/Validation_Exception');
  * @package    Log_Viewer
  * @subpackage Libraries
  * @author     ClearFoundation <developer@clearfoundation.com>
- * @copyright  2011 ClearFoundation
+ * @copyright  2011-2013 ClearFoundation
  * @license    http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License version 3 or later
  * @link       http://www.clearfoundation.com/docs/developer/apps/log_viewer/
  */
@@ -93,14 +95,17 @@ class Log_Viewer extends Engine
     ///////////////////////////////////////////////////////////////////////////////
 
     const FOLDER_LOG_FILES = '/var/log';
-    const MAX_BYTES = 512000;
+    const MAX_BYTES = 256000;
+    const DEFAULT_TAIL_LINES = 2000;
+    const SEARCH_COMPLETE = 'complete';
+    const SEARCH_TRUNCATED = 'truncated';
 
     ///////////////////////////////////////////////////////////////////////////////
     // M E T H O D S
     ///////////////////////////////////////////////////////////////////////////////
 
     /**
-     * Log_Viewer constructor.
+     * Log viewer constructor.
      */
 
     public function __construct()
@@ -109,7 +114,7 @@ class Log_Viewer extends Engine
     }
 
     /**
-     * Get Log files.
+     * Returns log files.
      *
      * @return array
      * @throws Engine_Exception
@@ -126,7 +131,7 @@ class Log_Viewer extends Engine
         $list = array();
 
         foreach ($files as $file) {
-            if (preg_match("/(Console)|(anaconda)|(btmp)|(cores)|(old)|(sa\/)|(ssl_)|(snort\/)|(ksyms)|(lastlog)|(rpmpkgs)|(wtmp)|(Xorg)|(gz$)/", $file))
+            if (preg_match("/(Cons)|(anaconda)|(btmp)|(cores)|(old)|(sa\/)|(ssl_)|(snort\/)|(ksyms)|(lastlog)|(rpmpkgs)|(wtmp)|(Xorg)|(gz$)/", $file))
                 continue;
 
             $pathregex = preg_quote(self::FOLDER_LOG_FILES, "/");
@@ -138,24 +143,56 @@ class Log_Viewer extends Engine
     }
 
     /**
-     * Get Log file entries.
+     * Returns log file entries.
      *
      * @param String $log_file log file contents
      * @param String $filter   filter
-     * @param int    $max      maximum number of bytes to fetch
      *
-     * @return array
+     * @return array results including status information in first item
      * @throws Engine_Exception
      */
 
-    public function get_log_entries($log_file, $filter = ".*", $max = self::MAX_BYTES)
+    public function get_log_entries($log_file, $filter)
     {
         clearos_profile(__METHOD__, __LINE__);
 
         Validation_Exception::is_valid($this->validate_log_file($log_file));
 
-        $target = new File(self::FOLDER_LOG_FILES . "/" . $log_file, TRUE);
-        $result = $target->get_search_results($filter, $max);
+        $too_large = FALSE;
+        $truncated = FALSE;
+        $result = array();
+
+        // Try to get full search results
+        //-------------------------------
+
+        try {
+            $file = new File(self::FOLDER_LOG_FILES . '/' . $log_file, TRUE);
+            $result = $file->get_search_results($filter);
+
+            $serialized_result = serialize($result);
+            $size = strlen($serialized_result);
+
+            if ($size <= self::MAX_BYTES) {
+                array_unshift($result, self::SEARCH_COMPLETE);
+                return $result;
+            }
+        } catch (File_Too_Large_Exception $e) {
+            // Keep going, but use truncated data
+        }
+
+        // Otherwise, just grab truncated set
+        //-----------------------------------
+
+        $raw_lines = $file->get_search_results($filter, self::DEFAULT_TAIL_LINES);
+
+        $result = array();
+
+        foreach ($raw_lines as $line) {
+            if (preg_match('/' . $filter . '/', $line))
+                $result[] = $line;
+        }
+
+        array_unshift($result, self::SEARCH_TRUNCATED);
 
         return $result;
     }

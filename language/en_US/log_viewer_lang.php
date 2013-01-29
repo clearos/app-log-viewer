@@ -9,5 +9,5 @@ $lang['log_viewer_file'] = 'Log File';
 $lang['log_viewer_filter'] = 'Filter';
 $lang['log_viewer_invalid_log_file'] = 'Invalid log file.';
 $lang['log_viewer_logs'] = 'Logs';
-$lang['log_viewer_result_too_big'] = 'Result has been truncated.  The result set is larger than the maximum (%s) that can be displayed.  Please export file to view full log contents.';
+$lang['log_viewer_result_too_big'] = 'The result set is larger than the maximum that can be displayed.  Please use the filter to refine your results.';
 $lang['log_viewer_show_full_line'] = 'Show Full Line';
