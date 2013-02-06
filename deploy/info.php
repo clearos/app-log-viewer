@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'log_viewer';
-$app['version'] = '1.4.15';
+$app['version'] = '1.4.16';
 $app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
@@ -26,5 +26,5 @@ $app['subcategory'] = lang('base_category_system');
 /////////////////////////////////////////////////////////////////////////////
 
 $app['core_requires'] = array(
-    'app-base >= 1:1.4.15',
+    'app-base >= 1:1.4.16',
 );
