@@ -1,7 +1,7 @@
 
 Name: app-log-viewer
 Epoch: 1
-Version: 1.4.16
+Version: 1.4.19
 Release: 1%{dist}
 Summary: Log Viewer
 License: GPLv3

@@ -98,7 +98,7 @@ class Log_Viewer extends ClearOS_Controller
         // Load views
         //-----------
 
-        $options['type'] = MY_Page::TYPE_CONFIGURATION;
+        $options['type'] = MY_Page::TYPE_WIDE_CONFIGURATION;
 
         $this->page->view_form('log_viewer', $data, lang('log_viewer_app_name'), $options);
     }
