@@ -11,5 +11,5 @@ $lang['log_viewer_file'] = 'Arquivo de Registros';
 $lang['log_viewer_filter'] = 'Filtrar';
 $lang['log_viewer_invalid_log_file'] = 'Arquivos de registros inválido.';
 $lang['log_viewer_logs'] = 'Registros';
-$lang['log_viewer_result_too_big'] = 'Resultado parcial. O resultado é maior que (%s), que é o máximo que pode ser exibido. Por favor  exportar para arquivo para visualizar o conteúdo completo dos registros.';
+$lang['log_viewer_result_set_too_big'] = 'The result set is larger than the maximum that can be displayed.  Please use the filter to refine your results.';
 $lang['log_viewer_show_full_line'] = 'Exibe linha inteira';

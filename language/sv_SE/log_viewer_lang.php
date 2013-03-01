@@ -11,5 +11,5 @@ $lang['log_viewer_file'] = 'Loggfil';
 $lang['log_viewer_filter'] = 'Filter';
 $lang['log_viewer_invalid_log_file'] = 'Ogiltig loggfil.';
 $lang['log_viewer_logs'] = 'Loggar';
-$lang['log_viewer_result_too_big'] = 'Resultatet är ej fullständigt.   Resultatet är större än maximala (%s) som kan visas.   Exportera filen för att se hela loggens innehåll.';
+$lang['log_viewer_result_set_too_big'] = 'The result set is larger than the maximum that can be displayed.  Please use the filter to refine your results.';
 $lang['log_viewer_show_full_line'] = 'Visa hel rad';

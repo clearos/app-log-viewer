@@ -11,5 +11,5 @@ $lang['log_viewer_file'] = 'Protokolldatei';
 $lang['log_viewer_filter'] = 'Filtern';
 $lang['log_viewer_invalid_log_file'] = 'Ungültige Protokolldatei.';
 $lang['log_viewer_logs'] = 'Protokolle';
-$lang['log_viewer_result_too_big'] = 'Das Ergebnis wurde abgeschnitten.  Das Ergebnis ist größer die maximale Größe (%s) die angezeigt wernden kann.  Bitte exportieren Sie die Datei um den Bericht vollständig anzusehen zu können. ';
+$lang['log_viewer_result_set_too_big'] = 'The result set is larger than the maximum that can be displayed.  Please use the filter to refine your results.';
 $lang['log_viewer_show_full_line'] = 'Zeile vollständig anzeigen';
