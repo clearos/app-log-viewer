@@ -85,7 +85,7 @@ foreach ($log_data as $id => $entry) {
 if ($is_truncated) {
     echo infobox_warning(
         lang('base_warning'),
-        lang('log_viewer_result_too_big')
+        lang('log_viewer_result_set_too_big')
     );
 }
 
