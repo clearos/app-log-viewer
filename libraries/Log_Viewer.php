@@ -3,9 +3,9 @@
 /**
  * Log_Viewer class.
  *
- * @category   Apps
- * @package    Log_Viewer
- * @subpackage Libraries
+ * @category   apps
+ * @package    log-viewer
+ * @subpackage libraries
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2011-2013 ClearFoundation
  * @license    http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License version 3 or later
@@ -79,9 +79,9 @@ clearos_load_library('base/Validation_Exception');
 /**
  * Log_Viewer class.
  *
- * @category   Apps
- * @package    Log_Viewer
- * @subpackage Libraries
+ * @category   apps
+ * @package    log-viewer
+ * @subpackage libraries
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2011-2013 ClearFoundation
  * @license    http://www.gnu.org/copyleft/lgpl.html GNU Lesser General Public License version 3 or later

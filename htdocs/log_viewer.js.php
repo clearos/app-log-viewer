@@ -3,9 +3,9 @@
 /**
  * Javascript helper for Log_Viewer.
  *
- * @category   Apps
- * @package    Log_Viewer
- * @subpackage Javascript
+ * @category   apps
+ * @package    log-viewer
+ * @subpackage javascript
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2003-2011 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later

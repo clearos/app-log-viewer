@@ -3,9 +3,9 @@
 /**
  * Log_Viewer controller.
  *
- * @category   Apps
- * @package    Log_Viewer
- * @subpackage Controllers
+ * @category   apps
+ * @package    log-viewer
+ * @subpackage controllers
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2011-2013 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
@@ -36,9 +36,9 @@
 /**
  * Log_Viewer controller.
  *
- * @category   Apps
- * @package    Log_Viewer
- * @subpackage Controllers
+ * @category   apps
+ * @package    log-viewer
+ * @subpackage controllers
  * @author     ClearFoundation <developer@clearfoundation.com>
  * @copyright  2011-2013 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
