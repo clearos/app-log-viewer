@@ -1,7 +1,7 @@
 
 Name: app-log-viewer
 Epoch: 1
-Version: 1.5.0
+Version: 1.6.5
 Release: 1%{dist}
 Summary: Log Viewer
 License: GPLv3
@@ -71,7 +71,6 @@ exit 0
 %files core
 %defattr(-,root,root)
 %exclude /usr/clearos/apps/log_viewer/packaging
-%exclude /usr/clearos/apps/log_viewer/tests
 %dir /usr/clearos/apps/log_viewer
 /usr/clearos/apps/log_viewer/deploy
 /usr/clearos/apps/log_viewer/language
