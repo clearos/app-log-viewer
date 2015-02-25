@@ -1,0 +1,17 @@
+<svg version="1.1" class="clearos-svg clearfoundation app-vendor-clearfoundation app-free app-category-reports app-sub-category-performance-and-resources" viewBox="0 0 400 400" preserveAspectRatio="xMinYMin" xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink">
+<path fill="#AA0707" d="M91.666,184.647"/>
+<path fill="#AA0707" d="M123.245,247.805"/>
+<path fill="#AA0707" d="M91.666,184.647"/>
+<path fill="#AA0707" d="M123.245,247.805"/>
+<g>
+	<g>
+		<polygon fill="#686868" points="221.139,82.207 221.139,171.569 303.118,171.569 303.118,164.202 		"/>
+		<path fill="#686868" d="M292.059,2.626h-18.726h-28.976H79.311v56.813H36.985V264.71H54.58V80.392h147.443v108.915h101.095
+			v187.131H97.317v20.937h223.419v-56.828h42.278V139.472V92.317V73.592L292.059,2.626z M221.139,171.569V82.207l81.979,89.363
+			L221.139,171.569L221.139,171.569z M305.05,114.75l-41.563-41.57V25.401l82.005,89.363L305.05,114.75L305.05,114.75z"/>
+	</g>
+	<rect x="118.263" y="213.016" fill="#686868" width="132.638" height="16.771"/>
+	<rect x="118.263" y="263.293" fill="#686868" width="132.638" height="16.764"/>
+	<rect x="118.263" y="313.563" fill="#686868" width="132.638" height="16.763"/>
+</g>
+</svg>
