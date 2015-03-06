@@ -7,7 +7,7 @@
  * @package    log-viewer
  * @subpackage views
  * @author     ClearFoundation <developer@clearfoundation.com>
- * @copyright  2011-2013 ClearFoundation
+ * @copyright  2011-2015 ClearFoundation
  * @license    http://www.gnu.org/copyleft/gpl.html GNU General Public License version 3 or later
  * @link       http://www.clearfoundation.com/docs/developer/apps/log_viewer/
  */
@@ -42,8 +42,7 @@ $this->lang->load('log_viewer');
 ///////////////////////////////////////////////////////////////////////////////
 
 $buttons = array(
-    form_submit_custom('display', lang('log_viewer_display')),
-    anchor_cancel('/app/log_viewer', 'low')
+    form_submit_custom('display', lang('log_viewer_display'))
 );
 
 echo form_open('log_viewer/index');
@@ -72,11 +71,16 @@ $headers = array(
 $items = array();
 
 foreach ($log_data as $id => $entry) {
+    if ($full_line)
+        $details = $entry;
+    else
+        $details = (strlen($entry) > 120) ? substr($entry, 0, 120) . ' ...' : $entry;
+
     $item['title'] = $id;
     $item['action'] = NULL;
     $item['anchors'] = NULL;
     $item['details'] = array(
-        '<span style=\'font-size: .8em; font-family: monospace;\'>' . htmlentities(($full_line ? $entry : substr($entry, 0, 120) . ' ...')) . '</span>'
+        '<span style=\'font-size: .8em; font-family: monospace;\'>' . htmlentities($details) . '</span>'
     );
 
     $items[] = $item;
