@@ -131,7 +131,7 @@ class Log_Viewer extends Engine
         $list = array();
 
         foreach ($files as $file) {
-            if (preg_match("/(Cons)|(anaconda)|(btmp)|(cores)|(old)|(sa\/)|(ssl_)|(snort\/)|(ksyms)|(lastlog)|(rpmpkgs)|(wtmp)|(Xorg)|(gz$)/", $file))
+            if (preg_match("/(Cons)|(anaconda)|(btmp)|(cores)|(old)|(sa\/)|(ssl_)|(snort\/)|(ksyms)|(lastlog)|(rpmpkgs)|(wtmp)|(Xorg)|(gz$)|(\.z$)/", $file))
                 continue;
 
             $pathregex = preg_quote(self::FOLDER_LOG_FILES, "/");
