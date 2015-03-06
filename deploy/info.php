@@ -28,3 +28,7 @@ $app['subcategory'] = lang('base_subcategory_performance_and_resources');
 $app['core_requires'] = array(
     'app-base >= 1:1.4.16',
 );
+
+$app['delete_dependency'] = array(
+    'app-log-viewer-core',
+);
