@@ -5,7 +5,7 @@
 /////////////////////////////////////////////////////////////////////////////
 
 $app['basename'] = 'log_viewer';
-$app['version'] = '2.1.8';
+$app['version'] = '2.1.9';
 $app['release'] = '1';
 $app['vendor'] = 'ClearFoundation';
 $app['packager'] = 'ClearFoundation';
@@ -25,10 +25,12 @@ $app['subcategory'] = lang('base_subcategory_performance_and_resources');
 // Packaging
 /////////////////////////////////////////////////////////////////////////////
 
-// FIXME: added app-process-viewer just to get it into default packages
+// FIXME: added app-process-viewer and app-events
+// just to get it into default packages
 $app['core_requires'] = array(
     'app-base >= 1:1.4.16',
     'app-process-viewer',
+    'app-events',
 );
 
 $app['delete_dependency'] = array(
