@@ -21,7 +21,7 @@ Summary: Log Viewer - API
 License: LGPLv3
 Group: Applications/API
 Requires: app-base-core
-Requires: app-base >= 1:1.4.16
+Requires: app-base-core >= 1:1.4.16
 
 %description core
 The Log Viewer app provides a tabular display of all system log files.  Viewing and searching of log files are essential and typically the first step in troubleshooting problems with your system.
